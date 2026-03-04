@@ -1,11 +1,7 @@
-import React from 'react'
+import { useEffect, useState } from "react";
 
-export function Movie() {
-  return (
-    <div className="App">
-      Movie
-    </div>
-  );
-}
+const Movie = (props) => {
+  return <div className="App">Movie</div>;
+};
 
-//export default Movie;
+export default Movie;

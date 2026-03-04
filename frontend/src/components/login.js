@@ -1,11 +1,7 @@
-import React from 'react'
+import { useEffect, useState } from "react";
 
-export function Login() {
-  return (
-    <div className="App">
-      Login
-    </div>
-  );
-}
+const Login = (props) => {
+  return <div className="App">Login</div>;
+};
 
-// export default Login;
+export default Login;

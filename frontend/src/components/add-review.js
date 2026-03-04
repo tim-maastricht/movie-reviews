@@ -1,11 +1,7 @@
-import React from 'react'
+import { useEffect, useState } from "react";
 
-export function AddReview() {
-  return (
-    <div className="App">
-      Add Review
-    </div>
-  );
-}
+const AddReview = (props) => {
+  return <div className="App">Add Review</div>;
+};
 
-//export default AddReview;
+export default AddReview;
