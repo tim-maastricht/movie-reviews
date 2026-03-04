@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import MovieDataService from "../services/movies";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 const MoviesList = (props) => {
   const [movies, setMovies] = useState([]);
@@ -35,7 +40,52 @@ const MoviesList = (props) => {
         console.log(e);
       });
   };
-  return <div className="App">Movie's List</div>;
+
+  const onChangeSearchTitle = (e) => {
+    const searchTitle = e.target.value;
+    setSearchTitle(searchTitle);
+  };
+
+  const onChangeSearchRating = (e) => {
+    const searchRating = e.target.value;
+    setSearchRating(searchRating);
+  };
+
+  return (
+    <div className="App">
+      <Container>
+        <Form>
+          <Row>
+            <Col>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="Search by title"
+                  value={searchTitle}
+                  onChange={onChangeSearchTitle}
+                />
+              </Form.Group>
+              <Button variant="primary" type="button" onClick={findByTitle}>
+                Search
+              </Button>
+            </Col>
+            <Col>
+              <Form.Group>
+                <Form.Control as="select" onChange={onChangeSearchRating}>
+                  {ratings.map((rating) => {
+                    return <option value={rating}>{rating}</option>;
+                  })}
+                </Form.Control>
+              </Form.Group>
+              <Button variant="primary" type="button" onClick={findByRating}>
+                Search
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
+    </div>
+  );
 };
 
 export default MoviesList;
