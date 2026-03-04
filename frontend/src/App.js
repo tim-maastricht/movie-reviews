@@ -29,16 +29,16 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
-              <Link to={"/movies"}>Movies</Link>
+            <Nav.Link as={Link} to={"/movies"}>
+              Movies
             </Nav.Link>
-            <Nav.Link>
+            
               {user ? (
-                <a onClick={logout}>Logout User</a>
+                <Nav.Link as={Link} onClick={logout}>Logout User</Nav.Link>
               ) : (
-                <Link to={"/login"}>Login</Link>
+                <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
               )}
-            </Nav.Link>
+            
           </Nav>
         </Navbar.Collapse>
       </Navbar>
