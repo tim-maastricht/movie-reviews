@@ -26,5 +26,5 @@ const Movie = (props) => {
 
   return <div></div>;
 };
-
+// TODO: find a better way to export
 export default Movie;
