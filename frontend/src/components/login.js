@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   // name and id setters
   const [name, setName] = useState("");
   const [id, setId] = useState("");
+
+  const navigate = useNavigate(); // api v6 replacement for history.push
 
   const onChangeName = (e) => {
     const name = e.target.value;
@@ -19,7 +22,7 @@ const Login = (props) => {
 
   const login = () => {
     props.login({ name: name, id: id });
-    props.history.push("/");
+    navigate("/"); // navigate to home after login
   };
 
   return (

@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import "./App.css";
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Movie from "./components/movie";
 import MoviesList from "./components/movies-list";
@@ -32,20 +32,28 @@ function App() {
             <Nav.Link as={Link} to={"/movies"}>
               Movies
             </Nav.Link>
-            
-              {user ? (
-                <Nav.Link as={Link} onClick={logout}>Logout User</Nav.Link>
-              ) : (
-                <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
-              )}
-            
+
+            {user ? (
+              <Nav.Link as={Link} onClick={logout}>
+                Logout User
+              </Nav.Link>
+            ) : (
+              <Nav.Link as={Link} to={"/login"}>
+                Login
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
-      <Switch>
-        <Route exact path={["/", "/movies"]} component={MoviesList}></Route>
-        <Route
+      <Routes>
+        <Route path="/" element={<MoviesList />} />
+        <Route path="/movies" element={<MoviesList />} />
+        <Route path="/movies/:id/review" element={<AddReview user={user} />} />
+        <Route path="/movies/:id" element={<Movie user={user} />} />
+        <Route path="/login" element={<Login login={login} />} />
+        {/* <Route
+          <Route exact path={["/", "/movies"]} component={MoviesList}></Route>
           path="/movies/:id/review"
           render={(props) => <AddReview {...props} user={user} />}
         ></Route>
@@ -56,8 +64,8 @@ function App() {
         <Route
           path="/login"
           render={(props) => <Login {...props} login={login} />}
-        ></Route>
-      </Switch>
+        ></Route> */}
+      </Routes>
     </div>
   );
 }

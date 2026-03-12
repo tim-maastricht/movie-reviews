@@ -7,9 +7,12 @@ import Image from "react-bootstrap/Image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import Media from "react-bootstrap/Media";
+import { useParams } from "react-router-dom";
+//import Media from "react-bootstrap/Media"; this is deprecated
 
 const Movie = (props) => {
+  const { id } = useParams(); // replacing props.match.params.id
+
   const [movie, setMovie] = useState({
     id: null,
     title: "",
@@ -29,8 +32,9 @@ const Movie = (props) => {
   };
 
   useEffect(() => {
-    getMovie(props.match.params.id);
-  }, [props.match.params.id]);
+    if (!id) return;
+    getMovie(id);
+  }, [id]);
 
   return (
     <div>
@@ -44,7 +48,7 @@ const Movie = (props) => {
             <Card.Body>
               <Card.Text>{movie.plot}</Card.Text>
               {props.user && (
-                <Link to={"/movies/" + props.match.params.id + "/review"}>
+                <Link to={`/movies/${id}/review`}>
                   Add Review
                 </Link>
               )}
@@ -55,8 +59,8 @@ const Movie = (props) => {
           <br />
           {movie.reviews.map((review, index) => {
             return (
-              <Media key={index}>
-                <Media.Body>
+              <div key={index} className="d-flex mb-3">
+                <div className="flex-grow-1">
                   <h5>{review.name + " reviewed on " + review.date}</h5>
                   <p>{review.review}</p>
                   {props.user && props.user.id === review.user_id && (
@@ -65,7 +69,7 @@ const Movie = (props) => {
                         <Link
                           to={{
                             pathname:
-                              "/movies/" + props.match.params.id + "/review",
+                              `/movies/${id}/review`,
                             state: { currentReview: review },
                           }}
                         >
@@ -77,8 +81,8 @@ const Movie = (props) => {
                       </Col>
                     </Row>
                   )}
-                </Media.Body>
-              </Media>
+                </div>
+              </div>
             );
           })}
         </Row>
