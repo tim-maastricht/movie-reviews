@@ -24,8 +24,19 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Movie Reviews</Navbar.Brand>
+      <Navbar bg="light" expand="lg" style={{ position: "fixed", width: "100vw", zIndex: 999 }}>
+        <Navbar.Brand href="#home">
+          <Link
+            to={"/"}
+            style={{
+              paddingLeft: "5%",
+              color: "black",
+              textDecoration: "none",
+            }}
+          >
+            Movie Reviews
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

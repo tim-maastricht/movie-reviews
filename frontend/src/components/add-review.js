@@ -33,7 +33,7 @@ const AddReview = ({ user }) => {
       user_id: user.id,
       movie_id: id, // using id from useParams()
     };
-    
+
     MovieDataService.createReview(data)
       .then((response) => {
         setSubmitted(true);
@@ -46,7 +46,7 @@ const AddReview = ({ user }) => {
 
 
   return (
-    <div>
+    <div style={{ paddingTop: "6%"}}>
       {submitted ? (
         <div>
           <h4>Review submitted successfully</h4>

@@ -27,7 +27,7 @@ const Login = (props) => {
 
   return (
     <>
-      <Form>
+      <Form style={{ paddingTop: "6%"}}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
           <Form.Control

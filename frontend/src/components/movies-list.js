@@ -82,7 +82,7 @@ const MoviesList = (props) => {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{ paddingTop: "6%"}}>
       <Container>
         <Form>
           <Row>
