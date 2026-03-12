@@ -37,7 +37,7 @@ const Movie = (props) => {
   }, [id]);
 
   return (
-    <div>
+    <div style={{ paddingTop: "6%" }}>
       <Container>
         <Row>
           <Col>
@@ -48,9 +48,7 @@ const Movie = (props) => {
             <Card.Body>
               <Card.Text>{movie.plot}</Card.Text>
               {props.user && (
-                <Link to={`/movies/${id}/review`}>
-                  Add Review
-                </Link>
+                <Link to={`/movies/${id}/review`}>Add Review</Link>
               )}
             </Card.Body>
           </Card>
@@ -67,11 +65,8 @@ const Movie = (props) => {
                     <Row>
                       <Col>
                         <Link
-                          to={{
-                            pathname:
-                              `/movies/${id}/review`,
-                            state: { currentReview: review },
-                          }}
+                          to={`/movies/${id}/review`}
+                          state={{ currentReview: review }}
                         >
                           Edit
                         </Link>

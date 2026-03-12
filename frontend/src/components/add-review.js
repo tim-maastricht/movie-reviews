@@ -20,7 +20,7 @@ const AddReview = ({ user }) => {
   const editing = Boolean(location.state?.currentReview);
 
   const onChangeReview = (e) => {
-    const review = e.target.value; // assign for readability
+    const review = e.target.value; // reassign for readability
     setReview(review);
   };
 
@@ -34,19 +34,33 @@ const AddReview = ({ user }) => {
       movie_id: id, // using id from useParams()
     };
 
-    MovieDataService.createReview(data)
-      .then((response) => {
-        setSubmitted(true);
-        navigate(`/movies/${id}`);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    if (editing) {
+      // get existing review id
+      const reviewId = location.state.currentReview._id;
+      data.review_id = reviewId;
+
+      MovieDataService.updateReview(data)
+        .then((response) => {
+          setSubmitted(true);
+          navigate(`/movies/${id}`);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      MovieDataService.createReview(data)
+        .then((response) => {
+          setSubmitted(true);
+          navigate(`/movies/${id}`);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   };
 
-
   return (
-    <div style={{ paddingTop: "6%"}}>
+    <div style={{ paddingTop: "6%" }}>
       {submitted ? (
         <div>
           <h4>Review submitted successfully</h4>
