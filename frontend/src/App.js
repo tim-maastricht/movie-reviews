@@ -52,19 +52,6 @@ function App() {
         <Route path="/movies/:id/review" element={<AddReview user={user} />} />
         <Route path="/movies/:id" element={<Movie user={user} />} />
         <Route path="/login" element={<Login login={login} />} />
-        {/* <Route
-          <Route exact path={["/", "/movies"]} component={MoviesList}></Route>
-          path="/movies/:id/review"
-          render={(props) => <AddReview {...props} user={user} />}
-        ></Route>
-        <Route
-          path="/movies/:id/"
-          render={(props) => <Movie {...props} user={user} />}
-        ></Route>
-        <Route
-          path="/login"
-          render={(props) => <Login {...props} login={login} />}
-        ></Route> */}
       </Routes>
     </div>
   );
