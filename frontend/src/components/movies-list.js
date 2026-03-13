@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 
-const MoviesList = (props) => {
+const MoviesList = (props) => { // this could be more explicit
   const [movies, setMovies] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
   const [searchRating, setSearchRating] = useState("");
