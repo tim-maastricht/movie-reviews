@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import MovieDataService from "../services/movies";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { useParams } from "react-router-dom";
 
 const Movie = (props) => {
   const { id } = useParams();
@@ -42,7 +41,7 @@ const deleteReview = (reviewId, index) => {
     .then(() => {
       setMovie((prevState) => ({
         ...prevState,
-        reviews: prevState.reviews.filter((_, i) => i !== index), // create new array
+        reviews: prevState.reviews.filter((_, i) => i !== index), // create new array, the _ indicates a var we won't use
       }));
     })
     .catch((e) => {
