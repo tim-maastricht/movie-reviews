@@ -36,6 +36,7 @@ export default class MoviesDAO {
     try {
       cursor = await movies
         .find(query)
+        // .sort({ _id: 1 })
         .limit(moviesPerPage)
         .skip(moviesPerPage * page);
       const moviesList = await cursor.toArray();
