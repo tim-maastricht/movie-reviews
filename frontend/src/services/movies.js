@@ -17,7 +17,7 @@ class MovieDataService {
   // user-entered search title, ratings and page number
   find(query, by = "title", page = 0) {
     return axios.get(
-      `https://localhost:3000/api/v1/movies?${by}=${query}&page=${page}`
+      `http://localhost:3000/api/v1/movies?${by}=${query}&page=${page}`
     )
   }
 
