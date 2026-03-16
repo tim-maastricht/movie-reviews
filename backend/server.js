@@ -19,10 +19,10 @@ app.options("*", cors());
 
 app.use(express.json());
 
-app.use("/api/v1/movies", movies); // TODO: refactor
-app.use("/./", (request, response) => {
-  // using regex because wildcard * was invalid
-  response.status(404).json({ error: "not found" });
+app.use("/api/v1/movies", movies);
+
+app.all("/{*splat}", (request, response) => {
+  res.status(404).json({ error: "not found" });
 });
-// TODO: add more custom response status codes
+
 export default app;
